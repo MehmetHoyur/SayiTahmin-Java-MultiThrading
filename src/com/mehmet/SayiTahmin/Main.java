@@ -6,7 +6,7 @@ public class Main {
 	
 	Thread thr1=new Thread(new Runnable() {
 		
-		@Override
+		
 		public void run() {
 			try {
 				sy.Oyuncu1();
@@ -24,6 +24,7 @@ public class Main {
 		@Override
 		public void run() {
 			try {
+				
 				sy.Oyuncu2();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -32,7 +33,22 @@ public class Main {
 			
 		}
 	});
+	Thread thr3=new Thread(new Runnable() {
+		
+		@Override
+		public void run() {
+			sy.Zorluk();
+			
+		}
+	});
 	
+	thr3.start();
+	try {
+		thr3.join();
+	} catch (InterruptedException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
 	thr1.start();
 	thr2.start();
 	
